@@ -3,7 +3,7 @@ import socket
 HOST = '127.0.0.1'  # Endereço IP do servidor
 PORTA = 5000            # Porta do servidor
 
-cliente = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+cliente = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 cliente.connect((HOST, PORTA))
 
 print("✅ Conectado ao servidor!")
