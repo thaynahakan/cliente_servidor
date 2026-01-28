@@ -10,7 +10,7 @@ servidor = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 servidor.bind((HOST, PORTA))
 servidor.listen(5)
 
-print("✅ Servidor ligado. Aguardando conexões...")
+print(" Servidor ligado. Aguardando conexões...")
 
 def obter_arp():
     try:
@@ -19,11 +19,11 @@ def obter_arp():
     except Exception as e:
         return f"Erro ao obter ARP: {e}"
 
-while True:  # 🔁 servidor nunca para
+while True:  #  servidor nunca para
     conexao, endereco = servidor.accept()
     print(f"\n🔗 Novo cliente conectado: {endereco}")
 
-    while True:  # 🔁 conversa com o cliente
+    while True:  #  conversa com o cliente
         try:
             dados = conexao.recv(1024)
 
@@ -38,7 +38,7 @@ while True:  # 🔁 servidor nunca para
                 resposta = obter_arp()
 
             elif mensagem == "sair":
-                print("👋 Cliente saiu.")
+                print(" Cliente saiu.")
                 conexao.send("Conexão encerrada.".encode())
                 break   # sai só da conversa, não do servidor
 
@@ -48,10 +48,10 @@ while True:  # 🔁 servidor nunca para
             conexao.send(resposta.encode())
 
         except Exception as erro:
-            print("⚠️ Erro com cliente:", erro)
+            print(" Erro com cliente:", erro)
             break
 
     conexao.close()
-    print("🔁 Aguardando novo cliente...")
+    print(" Aguardando novo cliente...")
 
 # servidor.close()  # só se você quiser desligar o servidor manualmente
