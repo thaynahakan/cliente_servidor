@@ -51,29 +51,50 @@ time → Controle de pausas e intervalos
 
 requests → Comunicação com a API do Telegram
 
-flowchart TD
-    A[Início do Sistema] --> B[Servidor Python]
-    B --> C[Cria Socket TCP :5000]
-    B --> D[Inicia Bot Telegram em Thread]
+flowchart TB
+    A[Início do Sistema]
 
-    C --> E[Aguardando Cliente TCP]
-    D --> F[Aguardando Mensagens Telegram]
+    subgraph Servidor
+        B[Servidor Python]
+        C[Socket TCP :5000]
+        D[Bot Telegram]
+        E[processar_comando]
+    end
 
-    E --> G[Recebe Comando]
-    F --> G
+    subgraph Entradas
+        F[Cliente TCP]
+        G[Usuário Telegram]
+    end
 
-    G --> H{processar_comando}
+    subgraph Comandos
+        H[arp -a]
+        I[ipconfig]
+        J[ping &lt;ip&gt;]
+    end
 
-    H -->|arp| I[Executa arp -a]
-    H -->|ipconfig| J[Executa ipconfig]
-    H -->|ping ip| K[Executa ping <ip>]
+    subgraph Saídas
+        K[Resposta em Texto]
+        L[Terminal do Cliente]
+        M[Chat do Telegram]
+    end
 
-    I --> L[Resposta em Texto]
-    J --> L
+    A --> B
+    B --> C
+    B --> D
+
+    F --> C
+    G --> D
+
+    C --> E
+    D --> E
+
+    E --> H
+    E --> I
+    E --> J
+
+    H --> K
+    I --> K
+    J --> K
+
     K --> L
-
-    L --> M[Envia Resposta ao Cliente TCP]
-    L --> N[Envia Resposta ao Telegram]
-
-    M --> E
-    N --> F
+    K --> M
