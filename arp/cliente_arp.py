@@ -9,12 +9,11 @@ cliente = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 cliente.connect((HOST, PORTA))
 
 print(" Conectado ao servidor!")
-print("Digite 'arp' para ver IPs e MACs.")
-print("Digite 'sair' para encerrar.\n")
+print("Comandos: arp | ipconfig | ping <ip> | sair")
 
 while True:
     try:
-        mensagem = input("Quer solicitar o arp? ").strip()
+        mensagem = input("O que você deseja solicitar? arp | ipconfig | ping <ip> | sair ").strip()
 
         if not mensagem:
             continue
@@ -33,7 +32,6 @@ while True:
             break
 
         print("\n Resposta do servidor:")
-        print("------------------------")
         print(resposta.decode(errors="ignore"))
 
     except ConnectionResetError:
