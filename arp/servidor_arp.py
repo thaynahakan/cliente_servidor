@@ -48,7 +48,7 @@ while True:  #  servidor nunca para
             dados = conexao.recv(1024)
 
             if not dados:
-                print("❌ Cliente desconectou.")
+                print("Cliente desconectou.")
                 break
 
             mensagem = dados.decode().strip().lower()
