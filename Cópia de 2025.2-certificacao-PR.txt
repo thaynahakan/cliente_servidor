@@ -1,0 +1,51 @@
+﻿Instituto Federal de Educação Ciência e Tecnologia do RN 
+Diretoria Acadêmica de Tecnologia da Informação 
+Curso de Tecnologia em Redes de Computadores 
+Certificação da disciplina de Programação para Redes 
+Bots Telegram são importantes ferramentas para oferecer serviços gerenciados por  programas. Na prática, um fluxo de trabalho possível para uso de bots é: 
+• O usuário fala com uma “conta bot” do aplicativo Telegram; 
+• O aplicativo Telegram envia a mensagem recebida ao servidor do Telegram; • O servidor do Telegram espera que um programa (o “programa bot”) recupere a  mensagem e devolva uma resposta. 
+• A responsa é enviada ao usuário do aplicativo Telegram. 
+Há todo um protocolo para que o fluxo funcione. Inicialmente é necessário: 
+• Criar a “conta bot” usando o próprio aplicativo do Telegram. Para isso deve-se  mandar mensagens para o BotFather.  
+• Na conversa com o BotFather, envie /help para entender as opções.  Basicamente a mensagem /newbot será usada. Ali se dá um nome para a “conta  bot” e se obtém uma chave de API, que será usada pelo “programa bot” para  interagir com os servidores do Telegram. A chave de API se parece com:  5814398997:AAYCtdAicJTBNnBZxA0Otx3F6xzUDgeWZI0 
+O protocolo de conversação entre o “programa bot” e os servidores do Telegram é HTTPS e  as mensagens são em formato JSON. Detalhes podem ser obtidos em  https://core.telegram.org/bots/api. 
+Os seguintes endpoints são relevantes para interação entre o “programa bot” e o servidor  Telegram (onde se lê <CHAVE-API> substitua pela chave obtida anteriormente): 
+• https://api.telegram.org/bot<CHAVE-API>/getMe - o “programa bot” acessa esse  endpoint e obtém informações sobre a “conta bot”; 
+• https://api.telegram.org/bot<CHAVE-API>/getUpdates - o “programa bot” acessa esse endpoint e recebe as  mensagens enviadas pelos usuários e que estão  retidas no servidor. Um exemplo de pedido e reposta do  servidor está ao lado. Ali, dois elementos se destacam:  o texto do chat (“/ola”) e o identificador do chat (1536667647). Esses elementos são importantes para  obter a mensagem que o usuário enviou e a qual  conversação (ou chat) a resposta deve ser enviada; cabe ao “programa bot” analisar e enviar respostas para cada uma das mensagens recebidas; 
+• https://api.telegram.org/bot<CHAVE 
+API>/sendMessage - o“program bot” envia a resposta a uma mensagem de usuário. Um exemplo está ao lado.  
+{ "ok": true, 
+ "result": [ 
+ { 
+ "update_id": 587753406,  "message": { "message_id": 2,  "from": { "id": 1536667647  }, 
+ "chat": { "id": 1536667647,  "first_name": "PCF Gbat",  "type": "private" 
+ }, 
+ "date": 1670352381,  "text": "/ola" 
+ } ] 
+} 
+{ 
+ "chat_id":1536667647,  
+ "text": "Aqui está tudo bem" }
+Em anexo a essa atividade há um programa denominado talk_to_gemini.py cujo  objetivo é permitir que o usuário faça perguntas ao gemini e exibir a resposta obtida. Para  que o programa opere é necessário obter as chaves de API nos respectivos sítios dos  provedores dos serviços e colocá-las nas variáveis do programa – para o gemini, por  exemplo, acesse https://ai.google.dev/gemini-api/docs/api-key. Avalie o programa com  calma e entenda o seu funcionamento, pois será necessário na sua atividade. 
+Por fim, o seu trabalho é criar um bot telegram ( “conta bot” e “programa bot”) que ofereça  os seguintes serviços na interface no aplicativo Telegram (um exemplo de bot incompleto,  está em telegram_bot.py). O bot não deve responder à mesma mensagem duas ou  mais vezes. 
+/askai pergunta 
+	O usuário faz uma pergunta, o “programa bot” acessa o  modelo de IA gemini, obtém a resposta e a devolve ao usuário.  Use o programa talk_to_geminy.py como base para  desenvolver esse serviço.
+	/routes 
+	O “programa bot” devolve para a aplicação Telegram a tabela  de rotas da máquina em que está executando.
+	/ipv4 
+	O “programa bot” devolve para os endereços IPv4 da máquina  em que está executando.
+	/ping endereço 
+	O “programa bot” devolve o resultado de um ping para o  endereço recebido.
+	
+
+
+
+Regras para o desenvolvimento da atividade: 
+• Não são permitidos os usos de bibliotecas prontas do Python que implementem os  serviços solicitados. Somente são permitidos: requests e subprocess; além  disso, chamadas externas aos programas ping, ipconfig, netstat, dmesg e  afins são permitidos; 
+• Mudanças em talk_to_geminy.py são permitidas, desde que respeitando as  restrições anteriores; 
+• Organize o seu código, comentando os aspectos relevantes, mas sem exageros; • Cada um dos serviços terá o mesmo peso de correção; 
+• Respeite estritamente os nomes e formas de uso dos serviços solicitados. Regras para a correção da atividade: 
+• Avaliação do código: 30% da nota. Não atentar para as regras de desenvolvimento  zera o valor; 
+• Apresentação de funcionamento: 40% da nota; 
+• Questionamento dos examinadores: 30% da nota.
