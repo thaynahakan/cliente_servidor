@@ -5,7 +5,7 @@ servidor = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 # IP da máquina do servidor
 # '' significa: qualquer interface de rede
-HOST = '192.168.0.112'
+HOST = 'IPHOST'
 PORTA = 5000
 
 servidor.bind((HOST, PORTA))

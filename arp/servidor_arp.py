@@ -2,7 +2,7 @@ import socket
 import subprocess
 
 #HOST = '127.0.0.1' # mesmo PC
-#HOST = '192.168.0.112'  # IP do servidor na rede local
+#HOST = ''  # IP do servidor na rede local
 HOST = '0.0.0.0'
 PORTA = 5000
 

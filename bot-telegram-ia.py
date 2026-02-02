@@ -4,8 +4,8 @@ import subprocess
 
 # ===================== CONFIGURAÇÕES =====================
 
-#BOT_TOKEN = "8104816754:AAG8nn_4pPIH1PVO93ygkeSBbUhtsqxWvtM"
-#GEMINI_TOKEN = "AIzaSyDBnek53ZKae1wlYQhLwgQmxLTaPIt_NPY"
+BOT_TOKEN = "CHAVE_DE_API_DO_TELEGRAM_AQUI"
+GEMINI_TOKEN = "CHAVE_DE_API_DO_GEMINI_AQUI"
 
 TELEGRAM_URL = f"https://api.telegram.org/bot{BOT_TOKEN}"
 

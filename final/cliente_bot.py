@@ -1,7 +1,7 @@
 import socket
 
 
-HOST = '192.168.0.112'  #para escutar em todas as interfaces
+HOST = 'IP-DO-HOST'  #para escutar em todas as interfaces
 #HOST = '127.0.0.1'   # mesmo PC
 PORTA = 5000
 

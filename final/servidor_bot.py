@@ -4,11 +4,11 @@ import threading
 import time
 import requests
 
-#TOKEN = "8104816754:AAG8nn_4pPIH1PVO93ygkeSBbUhtsqxWvtM"
+#TOKEN = "CHAVE_DE_API_DO_TELEGRAM_AQUI"
 URL = f"https://api.telegram.org/bot{TOKEN}"
 
 #HOST = '127.0.0.1' # mesmo PC
-#HOST = '192.168.0.112'  # IP do servidor na rede local
+#HOST = ''  # IP do servidor na rede local
 HOST = '0.0.0.0'
 PORTA = 5000
 
